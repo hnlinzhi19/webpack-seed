@@ -1,5 +1,5 @@
 import {isArray} from 'lodash';
-import style from './css/index.scss';
+import style from '../css/index.scss';
 console.log(isArray([1, 3]));
 
 export function isMyTest () {

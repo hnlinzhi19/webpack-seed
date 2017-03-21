@@ -1,15 +1,16 @@
 'use strict';
 
 const webpack = require("webpack");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     context: __dirname + "/src",
     entry: {
-        app: "./app.js",
+        app: "./js/app.js",
     },
     output: {
         path: __dirname + "/dist",
-        filename: "[name].bundle.js",
+        filename: "js/[name].bundle.js",
         publicPath: '/dist',
         library: 'myClassName',
     },
@@ -28,7 +29,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                use: ["style-loader", "css-loader","postcss-loader", "sass-loader"],
+                use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -36,5 +37,14 @@ module.exports = {
             },
             // Loaders for other file types can go here
         ],
-    }
+    },
+    "plugins": [
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/js/lib',
+            to:__dirname + '/dist/js/lib'
+        },{
+            from: __dirname + '/src/*.html',
+            to:__dirname + '/dist/'
+        }])
+    ]
 };
