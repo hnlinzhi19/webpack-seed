@@ -1,0 +1,48 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        // 不需要
+        "space-before-function-paren": 0,
+        "eol-last": 0,
+        "eqeqeq": 0,
+        "one-var": 0,
+        "no-undef": 0,
+        // 错误
+        "comma-dangle": [2, "never"],
+        "no-debugger": 2,
+        "no-constant-condition": 2,
+        "no-dupe-args": 2,
+        "no-dupe-keys": 2,
+        "no-duplicate-case": 2,
+        "no-empty-character-class": 2,
+        "no-invalid-regexp": 2,
+        "no-func-assign": 2,
+        "valid-typeof": 2,
+        "no-unreachable": 2,
+        "no-unexpected-multiline": 2,
+        "no-sparse-arrays": 2,
+        "no-shadow-restricted-names": 2,
+        "no-cond-assign": 2,
+        "no-native-reassign": 2,
+        "no-else-return": 2,//如果if语句里面有return,后面不能跟else语句
+        "no-extra-semi": 2,//禁止多余的冒号
+        "no-multi-spaces": 1,//不能用多余的空格
+        "no-plusplus": 0,//禁止使用++，--
+        "no-redeclare": 2,//禁止重复声明变量
+        "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
+        "no-use-before-define": 2,//未定义前不能使用
+        "block-scoped-var": 0,//块语句中使用var
+        "curly": [2, "all"]//必须使用 if(){} 中的{}
+    }
+}
