@@ -20,7 +20,8 @@
     "url-loader": "^0.5.8"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p "
+    "start": "webpack --watch & anywhere -p 3014",
+    "build": "webpack -p ",
+    "startBefore": "ln -s /Users/linz/Documents/linz/lin_learn/node-module/node_modules ./node_modules"
   }
 }
