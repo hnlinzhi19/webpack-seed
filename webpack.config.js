@@ -1,9 +1,9 @@
 'use strict';
 
-const webpack = require("webpack");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var px2rem = require('postcss-px2rem');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     context: __dirname + "/src",
     entry: {
@@ -27,7 +27,10 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: ["css-loader", "postcss", "sass-loader"]
+                })
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -36,17 +39,21 @@ module.exports = {
             // Loaders for other file types can go here
         ]
     },
-    "plugins": [
+    devServer: {
+        contentBase: __dirname,
+        compress: true,
+        port: 9000
+    },
+    plugins: [
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
             to: __dirname + '/dist/js/lib'
         }]),
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: function () {
-                    return [px2rem({remUnit: 75})];
-                }
-            }
-        })
+        new HtmlWebpackPlugin({
+            template:'./index.html',
+            inlineSource: '.(css)$'
+        }),
+        new HtmlWebpackInlineSourcePlugin(),
+        new ExtractTextPlugin("styles.css")
     ]
 };
