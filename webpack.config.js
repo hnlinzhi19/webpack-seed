@@ -4,6 +4,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 module.exports = {
     context: __dirname + "/src",
     entry: {
@@ -50,10 +51,10 @@ module.exports = {
             to: __dirname + '/dist/js/lib'
         }]),
         new HtmlWebpackPlugin({
-            template:'./index.html',
+            template: './index.html',
             inlineSource: '.(css)$'
         }),
         new HtmlWebpackInlineSourcePlugin(),
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin("css/styles.css")
     ]
 };
