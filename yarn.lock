@@ -1865,10 +1865,6 @@ html-minifier@^3.0.1, html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "2.8.x"
 
-html-webpack-include-assets-plugin@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/html-webpack-include-assets-plugin/-/html-webpack-include-assets-plugin-0.0.4.tgz#1bac01dd41d4105174d3d7fdaf861bbf87700419"
-
 html-webpack-inline-source-plugin@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/html-webpack-inline-source-plugin/-/html-webpack-inline-source-plugin-0.0.7.tgz#0f35ea7472661c934a7d4086441a4d49b7f89c58"
