@@ -37,7 +37,10 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 use: ["file-loader?limit=10000&name=[path][name].[ext]"]
             },
-            { test: /\.hbs$/, loader: "handlebars-loader" }
+             {
+                test: /\.tpl$/,
+                use: ["art-template"]
+            }
             // Loaders for other file types can go here
         ]
     },
