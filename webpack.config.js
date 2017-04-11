@@ -29,7 +29,8 @@ if (process.env.NODE_ENV === 'out') {
         }]),
         new HtmlWebpackPlugin({
             template: './index.html'
-        })
+        }),
+        new ExtractTextPlugin("css/styles.css")
     ];
 }
 module.exports = {
