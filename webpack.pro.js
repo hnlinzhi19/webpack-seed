@@ -55,10 +55,10 @@ module.exports = {
             to: __dirname + '/dist/js/lib'
         }]),
         new HtmlWebpackPlugin({
-            template: './index.html'
-            // inlineSource: '.(css)$'
-        })
-        // new HtmlWebpackInlineSourcePlugin(),
-        // new ExtractTextPlugin("css/styles.css")
+            template: './index.html',
+            inlineSource: '.(css)$'
+        }),
+        new HtmlWebpackInlineSourcePlugin(),
+        new ExtractTextPlugin("css/styles.css")
     ]
 };
