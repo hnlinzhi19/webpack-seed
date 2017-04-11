@@ -5,6 +5,33 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // var HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+var plugins = null;
+
+if (process.env.NODE_ENV === 'out') {
+    
+    plugins = [
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/js/lib',
+            to: __dirname + '/dist/js/lib'
+        }]),
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            inlineSource: '.(css)$'
+        }),
+        new HtmlWebpackInlineSourcePlugin(),
+        new ExtractTextPlugin("css/styles.css")
+    ];
+} else {
+    plugins = [
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/js/lib',
+            to: __dirname + '/dist/js/lib'
+        }]),
+        new HtmlWebpackPlugin({
+            template: './index.html'
+        })
+    ];
+}
 module.exports = {
     context: __dirname + "/src",
     entry: {
@@ -47,18 +74,7 @@ module.exports = {
     devServer: {
         contentBase: __dirname,
         compress: true,
-        port: 9000
+        port: 9100
     },
-    plugins: [
-        new CopyWebpackPlugin([{
-            from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
-        }]),
-        new HtmlWebpackPlugin({
-            template: './index.html'
-            // inlineSource: '.(css)$'
-        })
-        // new HtmlWebpackInlineSourcePlugin(),
-        // new ExtractTextPlugin("css/styles.css")
-    ]
+    plugins: plugins
 };
