@@ -12,11 +12,14 @@ if (process.env.NODE_ENV === 'out') {
     plugins = [
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
+            to: __dirname + '/sjtb/js/lib'
+        },{
+            from: __dirname + '/src/misc',
+            to: __dirname + '/sjtb/misc'
         }]),
         new HtmlWebpackPlugin({
             template: './index.html',
-            inlineSource: '.(css)$'
+            inlineSource: '.(css|js)$'
         }),
         new HtmlWebpackInlineSourcePlugin(),
         new ExtractTextPlugin("css/styles.css")
@@ -25,7 +28,10 @@ if (process.env.NODE_ENV === 'out') {
     plugins = [
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
+            to: __dirname + '/sjtb/js/lib'
+        },{
+            from: __dirname + '/src/misc',
+            to: __dirname + '/sjtb/misc'
         }]),
         new HtmlWebpackPlugin({
             template: './index.html'
@@ -39,9 +45,9 @@ module.exports = {
         app: "./js/app.js"
     },
     output: {
-        path: __dirname + "/dist",
+        path: __dirname + "/sjtb",
         filename: "js/[name].bundle.js",
-        publicPath: '/dist/',
+        publicPath: '/sjtb/',
         library: 'App'
     },
     module: {
