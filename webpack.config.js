@@ -6,16 +6,16 @@ var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // var HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 var plugins = null;
-
-if (process.env.NODE_ENV === 'out') {
+const buildEventName = process.env.npm_lifecycle_event
+if (buildEventName === 'buil') {
     
     plugins = [
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
-            to: __dirname + '/sjtb/js/lib'
+            to: __dirname + '/dist/js/lib'
         },{
             from: __dirname + '/src/misc',
-            to: __dirname + '/sjtb/misc'
+            to: __dirname + '/dist/misc'
         }]),
         new HtmlWebpackPlugin({
             template: './index.html',
@@ -28,10 +28,10 @@ if (process.env.NODE_ENV === 'out') {
     plugins = [
         new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
-            to: __dirname + '/sjtb/js/lib'
+            to: __dirname + '/dist/js/lib'
         },{
             from: __dirname + '/src/misc',
-            to: __dirname + '/sjtb/misc'
+            to: __dirname + '/dist/misc'
         }]),
         new HtmlWebpackPlugin({
             template: './index.html'
@@ -45,9 +45,9 @@ module.exports = {
         app: "./js/app.js"
     },
     output: {
-        path: __dirname + "/sjtb",
+        path: __dirname + "/dist",
         filename: "js/[name].bundle.js",
-        publicPath: '/sjtb/',
+        publicPath: '/dist/',
         library: 'App'
     },
     module: {
@@ -69,7 +69,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: ["file-loader?limit=10000&name=[path][name].[ext]"]
+                use: ["file-loader?limit=10000&name=[path][name].[ext]?v=[hash]"]
             },
              {
                 test: /\.tpl$/,

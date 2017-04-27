@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "art-template-loader": "^0.2.0",
+    "autoprefixer": "^6.7.7",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -26,8 +27,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --inline",
-    "dev": "NODE_ENV=out webpack --watch",
-    "build": "NODE_ENV=out webpack -p",
+    "dev": "webpack --watch",
+    "build": "webpack -p",
     "startBefore": "ln -s /Users/linz/Documents/linz/lin_learn/node-module/node_modules ./node_modules",
     "task-build": "npm run build",
     "task-start": "npm start"
