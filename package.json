@@ -30,7 +30,7 @@
     "dev": "webpack --watch",
     "build": "webpack -p",
     "startBefore": "ln -s /Users/linz/Documents/linz/lin_learn/node-module/node_modules ./node_modules",
-    "startWindow": "mklink E://lin_learn/node-module/node_modules ./node_modules",
+    "startWindow": "mklink /J  E:\\webpack-seed\\node_modules E:\\test\\node_modules",
     "task-build": "npm run build",
     "task-start": "npm start"
   }
