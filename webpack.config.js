@@ -1,5 +1,5 @@
 'use strict';
-
+var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
@@ -40,7 +40,7 @@ if (buildEventName === 'buil') {
     ];
 }
 module.exports = {
-    context: __dirname + "/src",
+    context: path.join(__dirname , "/src"),
     entry: {
         app: "./js/app.js"
     },
