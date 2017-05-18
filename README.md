@@ -4,14 +4,14 @@
 
 ## 教程
 * node 必须是 6.x  查询 敲命令 node -v
-* 执行命令 npm i  或者 cnpm i 或者 yanr
+* 执行命令 npm i  或者 cnpm i 或者 yarn
 * 待安装好模块后 开发模式 使用 npm start
 * 浏览器 打开 localhost:9100/dist/   (不一定是dist 后面 有介绍)
 
 ## 配置问题
 webpack.config.js
 
-打包地址 生成目录 默认是dist 只是开发用的 
+打包地址 生成目录 默认是dist(根据实际情况改为其他的) 只是开发用的 
 
 因为 每次开发后打包到的资源目录是不一定的 所以dist 一定要改为 响应的目录
 //最好是 讲src里面所有的 dist 替换
@@ -55,7 +55,7 @@ views/sb这个目录 叫后端去创建
 资源目录 讲 dist下面的 文件(除了 html php 以为) 全部复制的以下目录
 骰宝 为例子 ：sftp://120.26.207.102:63322/data/www/gt.cloudxt.cn/public/public/sb
 
-sb这个目录是不存在 的 我们自己创建 然后把dist（正常这个不是dist）里面的内容 复制过来
+sb这个目录是不存在 的 我们自己创建 然后把dist（正常这个不是dist 骰宝就是 sb 按实际情况 自己创建这个）里面的内容 复制过来
 
 ### 正式环境 改下 ip就好了
 
