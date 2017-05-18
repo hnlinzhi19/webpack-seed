@@ -7,37 +7,33 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // var HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 var plugins = null;
 const buildEventName = process.env.npm_lifecycle_event
-if (buildEventName === 'buil') {
-    
-    plugins = [
-        new CopyWebpackPlugin([{
+var tmpArray =[
+    new CopyWebpackPlugin([{
             from: __dirname + '/src/js/lib',
             to: __dirname + '/dist/js/lib'
         },{
             from: __dirname + '/src/misc',
             to: __dirname + '/dist/misc'
-        }]),
+        }])
+]
+if (buildEventName === 'build') {
+    
+    plugins = tmpArray.concat([
+        
         new HtmlWebpackPlugin({
             template: './index.html',
             inlineSource: '.(css|js)$'
         }),
         new HtmlWebpackInlineSourcePlugin(),
         new ExtractTextPlugin("css/styles.css")
-    ];
+    ]);
 } else {
-    plugins = [
-        new CopyWebpackPlugin([{
-            from: __dirname + '/src/js/lib',
-            to: __dirname + '/dist/js/lib'
-        },{
-            from: __dirname + '/src/misc',
-            to: __dirname + '/dist/misc'
-        }]),
+    plugins = tmpArray.concat([
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
         new ExtractTextPlugin("css/styles.css")
-    ];
+    ]);
 }
 module.exports = {
     context: path.join(__dirname , "/src"),
